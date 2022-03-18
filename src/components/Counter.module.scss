@@ -1,0 +1,58 @@
+$color1: #ffffff;
+
+
+.counter {
+  border: solid $color1 2px;
+  border-radius: 10%;
+  padding: 5px;
+  box-shadow: 10px 5px 5px #9f0f0f;
+}
+
+.display {
+  margin: 10px;
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 150px;
+  background-color: $color1;
+  color: black;
+  border-radius: 5%;
+  font-weight: bold;
+}
+
+.buttonsPanel {
+  border: solid $color1 2px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 5%;
+}
+
+.button {
+  font-size: 2em;
+  font-weight: bold;
+  background-color: $color1;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 15%;
+  &:hover {
+    background-color: #5531ea;
+    opacity: 0.5;
+    color: #ffffff;
+  }
+}
+
+.incButton {
+
+}
+
+.resetButton {
+  border-radius: 5px;
+}
+
+.maxNumber {
+  color: #ff1919;
+}
+
