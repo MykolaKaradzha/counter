@@ -7,7 +7,7 @@
 
 .display {
   margin: 10px;
-  font-size: 3em;
+  font-size: 2.5em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,8 +45,37 @@
   border-radius: 5px;
 }
 
-.maxNumber {
+.error {
   color: #ff1919;
+}
+
+.container {
+  font-size: 1em;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.editModeSpan {
+  font-size: 1.4rem;
+  color: green;
+}
+
+.defaultInput {
+  background-color: #404046;
+  margin-left: 3.6em;
+  width: 5em;
+  height: 2em;
+  font-size: 1em;
+  color: white;
+  text-align: center;
+}
+.defaultInput:hover {
+  border: 3px solid #2a2aab;
+}
+
+.errorInput {
+  background-color: #9f0f0f;
+  color: #ffffff;
 }
 
 /*# sourceMappingURL=Counter.module.css.map */

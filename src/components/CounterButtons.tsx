@@ -6,18 +6,18 @@ type PropsType = {
     adding: () => void
     resetting: () => void
     count: number
-    MAXNUMBER:number
-    STARTINGNUMBER:number
+    max:number
+    min:number
 }
 
-export const CounterButtons:React.FC<PropsType> = ({adding, resetting, count, STARTINGNUMBER, MAXNUMBER}) => {
+export const CounterButtons:React.FC<PropsType> = ({adding, resetting, count, min, max}) => {
 
     return (
         <div className={s.buttonsPanel}>
             <Button onClick={adding}
-                    disabled={count === MAXNUMBER ? true : false} className={s.incButton}>INC</Button>
+                    disabled={count === max ? true : false} className={s.incButton}>INC</Button>
             <Button onClick={resetting}
-                    disabled={count === STARTINGNUMBER ? true : false} className={s.resetButton}>RESET</Button>
+                    disabled={count === min ? true : false} className={s.resetButton}>RESET</Button>
         </div>
     );
 };

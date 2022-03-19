@@ -3,13 +3,24 @@ import s from './Counter.module.css'
 
 type PropsType = {
     count: number
+    max: number
+    isEditModeOn: boolean
+    error: boolean
+
 }
 
-export const CounterDisplay:React.FC<PropsType> = ({count}) => {
-    const finalClass = count== 5 ? `${s.maxNumber} ${s.display}` : s.display
+export const CounterDisplay:React.FC<PropsType> = ({count, max, isEditModeOn, error}) => {
+    const finalClass = count === max ? `${s.error} ${s.display}` : s.display
+    const errorMessage = <div className={s.error}>Incorrect value!</div>
+    const displayMessage = isEditModeOn ? <div className={s.editModeSpan}>enter values and press "set"</div>
+        : count
+
     return (
         <div className={finalClass}>
-            {count}
+            {
+                (error) ? errorMessage : displayMessage
+            }
+
         </div>
     );
 };

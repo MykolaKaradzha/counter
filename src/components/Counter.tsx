@@ -5,20 +5,25 @@ import s from './Counter.module.css'
 
 type PropsType = {
     count: number
-    adding: () => void
-    resetting: () => void
-    MAXNUMBER:number
-    STARTINGNUMBER:number
+    max:number
+    min:number
+    error: boolean
+    addCount: () => void
+    resetCount: () => void
+    isEditModeOn: boolean
+
 }
 
 
 
-export const Counter:React.FC<PropsType> = ({count, adding, resetting, MAXNUMBER, STARTINGNUMBER}) => {
+export const Counter:React.FC<PropsType> = ({count, addCount,
+                                                resetCount, max, min,
+                                                isEditModeOn, error}) => {
 
     return (
         <div className={s.counter}>
-            <CounterDisplay count={count}/>
-            <CounterButtons count={count} adding={adding} resetting={resetting} MAXNUMBER={MAXNUMBER} STARTINGNUMBER={STARTINGNUMBER}/>
+            <CounterDisplay count={count} isEditModeOn={isEditModeOn} max={max} error={error}/>
+            <CounterButtons count={count} adding={addCount} resetting={resetCount} max={max} min={min}/>
         </div>
     );
 };
