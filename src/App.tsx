@@ -43,8 +43,9 @@ function App() {
     return (
         <div className="App">
             <CounterSettings setMax={setMax} setMin={setMin} error={error}
-                             max={max} min={min} setSettings={setSettings} setEditMode={setEditMode}/>
-            <Counter count={count} addCount={addCount} resetCount={resetCount} isEditModeOn={isEditModeOn}
+                             max={max} min={min} setSettings={setSettings}
+                             setEditMode={setEditMode} isEditModeOn={isEditModeOn}/>
+            <Counter count={count} addCount={addCount} resetCount={resetCount} setEditMode={setEditMode} isEditModeOn={isEditModeOn}
                      max={max} min={min} error={error}/>
             {/*<button onClick={addToLocalStorage}>addToLocalStorage</button>*/}
             {/*<button onClick={getFromLocalStorage}>getFromLocalStorage</button>*/}

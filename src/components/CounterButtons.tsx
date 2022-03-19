@@ -8,16 +8,21 @@ type PropsType = {
     count: number
     max:number
     min:number
+    isEditModeOn: boolean
+    setEditMode: (isEditModeOn: boolean) => void
 }
 
-export const CounterButtons:React.FC<PropsType> = ({adding, resetting, count, min, max}) => {
-
+export const CounterButtons:React.FC<PropsType> = ({adding, resetting, count, min, max, setEditMode}) => {
+    const onClickSetHandler = () => {
+        setEditMode(true)
+    }
     return (
         <div className={s.buttonsPanel}>
             <Button onClick={adding}
-                    disabled={count === max ? true : false} className={s.incButton}>INC</Button>
+                    disabled={count === max ? true : false}>INC</Button>
             <Button onClick={resetting}
-                    disabled={count === min ? true : false} className={s.resetButton}>RESET</Button>
+                    disabled={count === min ? true : false}>RESET</Button>
+            <Button onClick={onClickSetHandler}>SET</Button>
         </div>
     );
 };

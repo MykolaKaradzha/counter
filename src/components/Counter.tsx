@@ -11,6 +11,7 @@ type PropsType = {
     addCount: () => void
     resetCount: () => void
     isEditModeOn: boolean
+    setEditMode: (isEditModeOn: boolean) => void
 
 }
 
@@ -18,12 +19,15 @@ type PropsType = {
 
 export const Counter:React.FC<PropsType> = ({count, addCount,
                                                 resetCount, max, min,
-                                                isEditModeOn, error}) => {
+                                                isEditModeOn, error, setEditMode}) => {
+    const editModeOnClass = isEditModeOn ? s.editMode : ''
 
     return (
-        <div className={s.counter}>
+        <div className={`${s.counter} ${editModeOnClass}`}>
             <CounterDisplay count={count} isEditModeOn={isEditModeOn} max={max} error={error}/>
-            <CounterButtons count={count} adding={addCount} resetting={resetCount} max={max} min={min}/>
+            <CounterButtons count={count} adding={addCount}
+                            resetting={resetCount} max={max}
+                            min={min} isEditModeOn={isEditModeOn} setEditMode={setEditMode}/>
         </div>
     );
 };

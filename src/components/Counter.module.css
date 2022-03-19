@@ -33,16 +33,12 @@
   background-color: #ffffff;
   padding: 5px;
   margin: 5px;
-  border-radius: 15%;
+  border-radius: 5px;
 }
 .button:hover {
   background-color: #5531ea;
   opacity: 0.5;
-  color: #ffffff;
-}
-
-.resetButton {
-  border-radius: 5px;
+  color: #fff;
 }
 
 .error {
@@ -75,7 +71,11 @@
 
 .errorInput {
   background-color: #9f0f0f;
-  color: #ffffff;
+  color: #fff;
+}
+
+.editMode {
+  display: none;
 }
 
 /*# sourceMappingURL=Counter.module.css.map */

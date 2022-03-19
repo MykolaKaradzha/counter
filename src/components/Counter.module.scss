@@ -36,21 +36,14 @@ $color1: #ffffff;
   background-color: $color1;
   padding: 5px;
   margin: 5px;
-  border-radius: 15%;
+  border-radius: 5px;
   &:hover {
     background-color: #5531ea;
     opacity: 0.5;
-    color: #ffffff;
+    color: #fff;
+    }
   }
-}
 
-.incButton {
-
-}
-
-.resetButton {
-  border-radius: 5px;
-}
 
 .error {
   color: #ff1919;
@@ -82,5 +75,9 @@ $color1: #ffffff;
 
 .errorInput {
   background-color: #9f0f0f;
-  color: #ffffff;
+  color: #fff;
+}
+
+.editMode {
+  display: none;
 }
