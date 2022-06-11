@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from "./components/Counter";
 import {CounterSettings} from "./components/CounterSettings";
+import {Button} from "./components/UniversalButton";
+import s from './components/Counter.module.css'
 
 
 function App() {
@@ -9,6 +11,12 @@ function App() {
     const [max, setMax] = useState<number>(0)
     const [min, setMin] = useState<number>(0)
     const [isEditModeOn, setEditMode] = useState<boolean>(false)
+    const [alternativeOn, setAlternative] = useState<boolean>(false)
+
+    const editModeOnClass = `${isEditModeOn ? s.editMode : ''}`
+    const editModeOffClass = `${isEditModeOn ? '' : s.editMode}`
+    const counterClass = alternativeOn ? '' : editModeOnClass
+    const settingsClass = alternativeOn ? '' : editModeOffClass
 
     const error = min >= max || min < 0;
 
@@ -37,13 +45,20 @@ function App() {
     const resetCount = () => {
         setCount(min)
     }
+    const switchOnAlternativeMode = () => {
+        setAlternative(!alternativeOn)
+    }
     return (
         <div className="App">
-            <CounterSettings setMax={setMax} setMin={setMin} error={error}
-                             max={max} min={min} setSettings={setSettings}
-                             setEditMode={setEditMode} isEditModeOn={isEditModeOn}/>
-            <Counter count={count} addCount={addCount} resetCount={resetCount} setEditMode={setEditMode} isEditModeOn={isEditModeOn}
-                     max={max} min={min} error={error}/>
+            <Button className={s.switchButton} onClick={switchOnAlternativeMode}>Switch</Button>
+            <div className={s.counterWrapper}>
+                <CounterSettings setMax={setMax} setMin={setMin} error={error}
+                                 max={max} min={min} setSettings={setSettings}
+                                 setEditMode={setEditMode} className={settingsClass}/>
+                <Counter count={count} addCount={addCount} resetCount={resetCount} setEditMode={setEditMode}
+                         isEditModeOn={isEditModeOn}
+                         max={max} min={min} error={error} className={counterClass}/>
+            </div>
         </div>
     );
 }

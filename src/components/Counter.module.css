@@ -1,3 +1,8 @@
+.counterWrapper {
+  display: flex;
+  gap: 2em;
+}
+
 .counter {
   border: solid #ffffff 2px;
   border-radius: 10%;
@@ -76,6 +81,10 @@
 
 .editMode {
   display: none;
+}
+
+.switchButton {
+  margin-bottom: 2em;
 }
 
 /*# sourceMappingURL=Counter.module.css.map */

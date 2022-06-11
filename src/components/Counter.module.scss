@@ -1,5 +1,9 @@
 $color1: #ffffff;
 
+.counterWrapper {
+  display: flex;
+  gap: 2em;
+}
 
 .counter {
   border: solid $color1 2px;
@@ -44,7 +48,6 @@ $color1: #ffffff;
     }
   }
 
-
 .error {
   color: #ff1919;
 }
@@ -81,3 +84,8 @@ $color1: #ffffff;
 .editMode {
   display: none;
 }
+
+.switchButton {
+  margin-bottom: 2em;
+}
+
