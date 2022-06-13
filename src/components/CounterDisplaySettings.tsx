@@ -5,21 +5,20 @@ type PropsType = {
     max: number
     min: number
     error: boolean
-    setMax: (max: number) => void
-    setMin: (min: number) => void
-    setEditMode: (isEditModeOn: boolean) => void
+    editExtremumValue: (newValue: number, extremumType: string) => void
+
 }
 
-export const CounterDisplaySettings:React.FC<PropsType> = ({max, min, setMax, setMin, setEditMode, error}) => {
+export const CounterDisplaySettings:React.FC<PropsType> = ({max, min, editExtremumValue, error}) => {
 
     const onChangeMaxHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        setMax(event.currentTarget.value && JSON.parse(event.currentTarget.value))
-        setEditMode(true);
+        editExtremumValue(event.currentTarget.value && JSON.parse(event.currentTarget.value), 'max')
+
 
     }
     const onChangeMinHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        setMin(event.currentTarget.value && JSON.parse(event.currentTarget.value))
-        setEditMode(true);
+        editExtremumValue(event.currentTarget.value && JSON.parse(event.currentTarget.value), 'min')
+
     }
     const inputClass = `${s.defaultInput} ${error ? s.errorInput : ''}`
     return (

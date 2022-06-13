@@ -7,21 +7,19 @@ type PropsType = {
     max: number
     min: number
     error: boolean
-    setMax: (max: number) => void
-    setMin: (min: number) => void
+    editExtremumValue: (newValue: number, extremumType: string) => void
     setSettings: () => void
-    setEditMode: (isEditModeOn: boolean) => void
     className: string
 
 }
 
-export const CounterSettings:React.FC<PropsType> = ({max, min, setMax,
-                                                        setMin, setSettings, setEditMode,
+export const CounterSettings:React.FC<PropsType> = ({max, min, editExtremumValue,
+                                                         setSettings,
                                                         error, className}) => {
     return (
         <div className={`${s.counter} ${className}`}>
-            <CounterDisplaySettings setMax={setMax} setMin={setMin} max={max} min={min} error={error} setEditMode={setEditMode}/>
-            <CounterButtonsSettings setSettings={setSettings} setEditMode={setEditMode} error={error}/>
+            <CounterDisplaySettings editExtremumValue={editExtremumValue} max={max} min={min} error={error}/>
+            <CounterButtonsSettings setSettings={setSettings} error={error}/>
         </div>
     );
 };

@@ -5,14 +5,12 @@ import {Button} from "./UniversalButton";
 type PropsType = {
     error: boolean
     setSettings: () => void
-    setEditMode: (isEditModeOn: boolean) => void
 }
 
-export const CounterButtonsSettings:React.FC<PropsType> = ({setSettings, setEditMode, error}) => {
+export const CounterButtonsSettings:React.FC<PropsType> = ({setSettings, error}) => {
     const onClickSetHandler = () => {
         if (!error) {
             setSettings();
-            setEditMode(false);
         }
     }
     return (

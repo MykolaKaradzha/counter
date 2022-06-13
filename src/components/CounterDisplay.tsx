@@ -12,7 +12,7 @@ type PropsType = {
 export const CounterDisplay:React.FC<PropsType> = ({count, max, isEditModeOn, error}) => {
     const finalClass = count === max ? `${s.error} ${s.display}` : s.display
     const errorMessage = <div className={s.error}>Incorrect value!</div>
-    const displayMessage = isEditModeOn ? <div className={s.editModeSpan}>enter values and press "set"</div>
+    const displayMessage = isEditModeOn ? <div className={s.editModeSpan}>Enter values and press "set"</div>
         : count
 
     return (
