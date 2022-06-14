@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {Counter} from "./components/Counter";
 import {CounterSettings} from "./components/CounterSettings";
@@ -24,6 +24,7 @@ function App() {
     // const [isEditModeOn, setEditMode] = useState<boolean>(false)
     // const [alternativeOn, setAlternative] = useState<boolean>(false)
 
+
     const count = useSelector<AppStateType, number>(state => state.counter.count)
     const max = useSelector<AppStateType, number>(state => state.counter.max)
     const min = useSelector<AppStateType, number>(state => state.counter.min)
@@ -31,8 +32,30 @@ function App() {
     const isAlternativeOn = useSelector<AppStateType, boolean>(state => state.counter.isAlternativeOn)
     const dispatch = useDispatch()
 
+    const editModeOnClass = `${isEditModeOn ? s.editMode : ''}`;
+    const editModeOffClass = `${isEditModeOn ? '' : s.editMode}`;
+    const counterClass = isAlternativeOn ? '' : editModeOnClass;
+    const settingsClass = isAlternativeOn ? '' : editModeOffClass;
+    const error = min >= max || min < 0;
+
+    // useEffect(() => {
+    //     const storedValueMax = localStorage.getItem('max')
+    //     const storedValueMin = localStorage.getItem('min')
+    //     if (storedValueMax && storedValueMin) {
+    //         dispatch(setMaxValueAC(JSON.parse(storedValueMax)))
+    //         dispatch(setMinValueAC(JSON.parse(storedValueMin)))
+    //     }
+    // }, [])
+    // const setLocalStorage = () => {
+    //     localStorage.setItem('max', JSON.stringify(max))
+    //     localStorage.setItem('min', JSON.stringify(min))
+    // }
+
     const addCount = () => {
-        count < max && dispatch(addCountAC())
+        // "count" is added only if "count" is less than "max" and if app is not in EditMode.
+        if (count < max && !isEditModeOn) {
+            dispatch(addCountAC())
+        }
     }
     const editExtremumValue = (newValue: number, extremumType: string) => {
         extremumType === 'max'
@@ -40,7 +63,8 @@ function App() {
             : dispatch(setMinValueAC(newValue))
     }
     const resetCount = () => {
-        dispatch(resetCountAC())
+        // app resets if not in EditMode
+        !isEditModeOn && dispatch(resetCountAC())
     }
 
     const setEditMode = (isEditModeOn: boolean) => {
@@ -48,36 +72,12 @@ function App() {
     }
 
     const setSettings = () => {
-        // addToLocalStorageSettings();
         resetCount();
         dispatch(setEditModeAC(false))
     }
     const setAlternativeMode = () => {
         dispatch(setAlternativeAC())
     }
-
-    const editModeOnClass = `${isEditModeOn ? s.editMode : ''}`;
-    const editModeOffClass = `${isEditModeOn ? '' : s.editMode}`;
-    const counterClass = isAlternativeOn ? '' : editModeOnClass;
-    const settingsClass = isAlternativeOn ? '' : editModeOffClass;
-    const error = min >= max || min < 0;
-
-    // const addToLocalStorageSettings = () => {
-    //     localStorage.setItem("max", JSON.stringify(max))
-    //     localStorage.setItem("min", JSON.stringify(min))
-    // }
-    //
-    // useEffect(() => {
-    //     const maxAsString = localStorage.getItem("max")
-    //     const minAsString = localStorage.getItem("min")
-    //     if (maxAsString && minAsString) {
-    //         setMax(JSON.parse(maxAsString))
-    //         setMin(JSON.parse(minAsString))
-    //     }
-    // }, [])
-    //
-
-
 
     return (
         <div className="App">

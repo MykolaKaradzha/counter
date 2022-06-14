@@ -36,7 +36,6 @@ export const CounterReducer = (state: InitialStateType = initialState, action: A
             return {...state, isEditModeOn: action.payload.isEditModeOn}
         case "SET-ALTERNATIVE":
             return {...state, isAlternativeOn: !state.isAlternativeOn}
-
         default:
             return state
 
